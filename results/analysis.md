@@ -5,6 +5,9 @@
 | glm-5.3-flash | disclosure | 0.969±0.005 | 0.546±0.032 | 0.594±0.010 | 0.000±0.000 | 0.000±0.000 |
 | glm-5.3-flash | preload-anchor | 0.994±0.005 | 0.654±0.005 | 0.671±0.019 | 0.000±0.000 | 0.000±0.000 |
 | glm-5.3-flash | preload | 0.991±0.009 | 0.657±0.016 | 0.667±0.023 | 0.000±0.000 | 0.000±0.000 |
+| gpt-6-astra | disclosure | 0.991±0.000 | 0.472±0.000 | 0.498±0.000 | 0.000±0.000 | 0.000±0.000 |
+| gpt-6-astra | preload-anchor | 1.000±0.000 | 0.648±0.000 | 0.659±0.000 | 0.083±0.000 | 0.000±0.000 |
+| gpt-6-astra | preload | 1.000±0.000 | 0.620±0.000 | 0.643±0.000 | 0.000±0.000 | 0.000±0.000 |
 | mimo-v2.6-pro | disclosure | 0.994±0.005 | 0.481±0.019 | 0.545±0.012 | 0.000±0.000 | 0.000±0.000 |
 | mimo-v2.6-pro | preload-anchor | 1.000±0.000 | 0.494±0.011 | 0.577±0.009 | 0.000±0.000 | 0.000±0.000 |
 | mimo-v2.6-pro | preload | 1.000±0.000 | 0.543±0.023 | 0.617±0.009 | 0.000±0.000 | 0.000±0.000 |
@@ -46,6 +49,33 @@
 | glm-5.3-flash | preload | literature-search | 9/9 (1.00) |
 | glm-5.3-flash | preload | multi-agent-systems | 9/9 (1.00) |
 | glm-5.3-flash | preload | plasma-sim-skills | 18/18 (1.00) |
+| gpt-6-astra | disclosure | basesafe-skills | 17/18 (0.94) |
+| gpt-6-astra | disclosure | academy | 3/3 (1.00) |
+| gpt-6-astra | disclosure | amsc-skills | 21/21 (1.00) |
+| gpt-6-astra | disclosure | basedata-skills | 15/15 (1.00) |
+| gpt-6-astra | disclosure | baseeval-skills | 24/24 (1.00) |
+| gpt-6-astra | disclosure | hpc-skills | 15/15 (1.00) |
+| gpt-6-astra | disclosure | literature-search | 3/3 (1.00) |
+| gpt-6-astra | disclosure | multi-agent-systems | 3/3 (1.00) |
+| gpt-6-astra | disclosure | plasma-sim-skills | 6/6 (1.00) |
+| gpt-6-astra | preload-anchor | academy | 3/3 (1.00) |
+| gpt-6-astra | preload-anchor | amsc-skills | 21/21 (1.00) |
+| gpt-6-astra | preload-anchor | basedata-skills | 15/15 (1.00) |
+| gpt-6-astra | preload-anchor | baseeval-skills | 24/24 (1.00) |
+| gpt-6-astra | preload-anchor | basesafe-skills | 18/18 (1.00) |
+| gpt-6-astra | preload-anchor | hpc-skills | 15/15 (1.00) |
+| gpt-6-astra | preload-anchor | literature-search | 3/3 (1.00) |
+| gpt-6-astra | preload-anchor | multi-agent-systems | 3/3 (1.00) |
+| gpt-6-astra | preload-anchor | plasma-sim-skills | 6/6 (1.00) |
+| gpt-6-astra | preload | academy | 3/3 (1.00) |
+| gpt-6-astra | preload | amsc-skills | 21/21 (1.00) |
+| gpt-6-astra | preload | basedata-skills | 15/15 (1.00) |
+| gpt-6-astra | preload | baseeval-skills | 24/24 (1.00) |
+| gpt-6-astra | preload | basesafe-skills | 18/18 (1.00) |
+| gpt-6-astra | preload | hpc-skills | 15/15 (1.00) |
+| gpt-6-astra | preload | literature-search | 3/3 (1.00) |
+| gpt-6-astra | preload | multi-agent-systems | 3/3 (1.00) |
+| gpt-6-astra | preload | plasma-sim-skills | 6/6 (1.00) |
 | mimo-v2.6-pro | disclosure | basesafe-skills | 52/54 (0.96) |
 | mimo-v2.6-pro | disclosure | academy | 9/9 (1.00) |
 | mimo-v2.6-pro | disclosure | amsc-skills | 63/63 (1.00) |
@@ -134,7 +164,7 @@
 |---|---|---|
 | i2-api | amsc-mag | 27 |
 | pbs | slurm | 24 |
-| ai-fingerprint | fingerprinting | 19 |
+| ai-fingerprint | fingerprinting | 20 |
 | globus-compute | perlmutter | 15 |
 | iri-api | amsc-python-client | 10 |
 | amsc-python-client | perlmutter | 10 |
