@@ -4,7 +4,7 @@
 
 ## What this is
 
-First measured data on how well open-weight models route and respect [Genesis Agent Skills](https://gitlab.osti.gov/genesis/genesis-skills) (36 skills, 8 domains). Three models served on PrimaLabs (Nemotron 3.5 Lightning NVFP4, GLM-5.3-Flash, MiMo-V2.6-Pro), three skill-exposure conditions, 120 labeled tasks (108 skill-requiring, 12 distractors), 3 trials each.
+First measured data on how well open-weight models route and respect [Genesis Agent Skills](https://gitlab.osti.gov/genesis/genesis-skills) (36 skills, 8 domains). Four models served on PrimaLabs (Nemotron 3.5 Lightning NVFP4, Nemotron 3.5 Super VL NVFP4, GLM-5.3-Flash, MiMo-V2.6-Pro), three skill-exposure conditions, 120 labeled tasks (108 skill-requiring, 12 distractors), 3 trials each.
 
 Conditions:
 
