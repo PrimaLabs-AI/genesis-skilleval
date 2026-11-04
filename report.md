@@ -19,6 +19,9 @@ Conditions:
 | nemotron-lightning | disclosure | 0.793±0.005 | 0.682±0.019 | 0.681±0.037 | 0.000 | 0.000 |
 | nemotron-lightning | preload | 0.747±0.033 | 0.660±0.019 | 0.692±0.034 | **0.444±0.048** | 0.114±0.013 |
 | nemotron-lightning | **preload-anchor** | **0.855±0.019** | **0.738±0.027** | **0.749±0.062** | **0.000** | 0.000 |
+| nemotron-super-vl | disclosure | 0.932±0.019 | 0.645±0.005 | 0.648±0.012 | 0.000 | 0.000 |
+| nemotron-super-vl | **preload** | **0.981±0.010** | **0.830±0.019** | **0.824±0.014** | 0.028±0.048 | 0.003±0.005 |
+| nemotron-super-vl | preload-anchor | 0.960±0.019 | 0.793±0.005 | 0.733±0.013 | 0.000 | 0.000 |
 | glm-5.3-flash | disclosure | 0.969±0.005 | 0.546±0.032 | 0.594±0.010 | 0.000 | 0.000 |
 | glm-5.3-flash | preload | 0.991±0.009 | 0.657±0.016 | 0.667±0.023 | 0.000 | 0.000 |
 | glm-5.3-flash | preload-anchor | 0.994±0.005 | 0.654±0.005 | 0.671±0.019 | 0.000 | 0.000 |
@@ -33,6 +36,7 @@ recall = required skill among selected; exact = selected exactly the required sk
 1. **Full-catalog preload breaks Nemotron's output discipline; a one-line anchor fixes it and unlocks the gains.** Raw preload caused 44% of distractor tasks to break the JSON routing contract — the model answered the question directly instead of routing (e.g., wrote the Python function instead of `{"skills": []}`). It never selected a *wrong* skill; the failure is protocol compliance under 63k tokens of instruction mass, not routing. Appending `Remember: reply with JSON only…` to the user turn eliminated every break **and** made preload-anchor Nemotron's best condition on all metrics (+6pp recall, +6pp exact over standard disclosure). Implication: with long-context models, skip progressive disclosure, preload + cache the full catalog, and inject a format anchor at the serving layer.
 2. **Models trade recall against precision in opposite corners.** Nemotron is conservative (selects 1.1 skills/task, highest exact-match); GLM/MiMo near-perfect recall but spray selections (1.6–1.8 skills/task, exact as low as 0.48). For agent harnesses where each activated skill costs context and tool permissions, exact-match is the metric that matters.
 3. **The catalog itself has routing hazards.** Top confusions are near-duplicate skills: `pbs`→`slurm` (21), `ai-fingerprint`→`fingerprinting` (12 — two skills with overlapping descriptions in basesafe), `i2-api`→`amsc-mag` (19). Nemotron's worst domains (academy 0.33 disclosure-recall, amsc-skills 0.67) have the least distinctive descriptions. Actionable upstream: sharpen description fields; merge or cross-reference the fingerprinting pair. Notably, preload-anchor fixed academy entirely (0.33→1.00) — full instructions disambiguate what terse descriptions can't.
+4. **Instruction-mass tolerance scales with capacity; the anchor is model-conditional (Super VL, added 11-05).** Super VL posts the best activation numbers in the study under raw preload (exact 0.830, +18.5pp over its own disclosure; precision 0.824) with essentially no protocol breaks — the Lightning format-break does not reproduce at Super scale. The anchor that rescued Lightning slightly hurts Super VL (−3.7pp exact). Serving guidance: preload+cache the catalog for both; inject the anchor only for Lightning-class models. Separately, Super VL's execution pilot (3.43/3.51/2.86) is understated by a serving bug: several responses degenerate into unbounded repeated `</function_calls>`/`</system>` tags — chat-template/stop-token mismatch in the Super VL path; file with the serving team before any agentic benchmarking.
 
 ## Caveats
 
@@ -66,7 +70,7 @@ Model performs the task with the required SKILL.md in context; GLM-5.3-Flash jud
 
 Subject: Measured skill-activation data for genesis-skills — collaboration?
 
-We built an activation/compliance eval for the genesis-skills catalog and ran it across three open models on our serving stack (3 conditions × 3 trials × 120 tasks). Three results you may find useful: (1) with 1M-context models, preloading the full catalog beats progressive disclosure — but only with a format anchor, otherwise output-protocol compliance drops 44%; (2) models differ sharply on precision vs recall in skill routing; (3) the eval surfaces catalog-level routing hazards (pbs/slurm, ai-fingerprint/fingerprinting confusions) we'd like to fix upstream. Harness + data attached; happy to contribute it via PR and align with whatever BASE is already measuring before we write anything up. — Prasanna
+We built an activation/compliance eval for the genesis-skills catalog and ran it across four open models on our serving stack (3 conditions × 3 trials × 120 tasks). Three results you may find useful: (1) with 1M-context models, preloading the full catalog beats progressive disclosure — but only with a format anchor, otherwise output-protocol compliance drops 44%; (2) models differ sharply on precision vs recall in skill routing; (3) the eval surfaces catalog-level routing hazards (pbs/slurm, ai-fingerprint/fingerprinting confusions) we'd like to fix upstream. Harness + data attached; happy to contribute it via PR and align with whatever BASE is already measuring before we write anything up. — Prasanna
 
 ### To Tom Danielson (SRNL)
 

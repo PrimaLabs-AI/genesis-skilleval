@@ -11,6 +11,9 @@
 | nemotron-3.5-lightning-nvfp4 | disclosure | 0.793±0.005 | 0.682±0.019 | 0.681±0.037 | 0.000±0.000 | 0.000±0.000 |
 | nemotron-3.5-lightning-nvfp4 | preload-anchor | 0.855±0.019 | 0.738±0.027 | 0.749±0.062 | 0.000±0.000 | 0.000±0.000 |
 | nemotron-3.5-lightning-nvfp4 | preload | 0.747±0.033 | 0.660±0.019 | 0.692±0.034 | 0.444±0.048 | 0.114±0.013 |
+| nemotron-3.5-super-vl-nvfp4 | disclosure | 0.932±0.019 | 0.645±0.005 | 0.648±0.012 | 0.000±0.000 | 0.000±0.000 |
+| nemotron-3.5-super-vl-nvfp4 | preload-anchor | 0.960±0.019 | 0.793±0.005 | 0.734±0.013 | 0.000±0.000 | 0.000±0.000 |
+| nemotron-3.5-super-vl-nvfp4 | preload | 0.981±0.009 | 0.830±0.019 | 0.824±0.014 | 0.028±0.048 | 0.003±0.005 |
 
 ## Per-domain recall (worst first)
 
@@ -97,23 +100,50 @@
 | nemotron-3.5-lightning-nvfp4 | preload | plasma-sim-skills | 17/18 (0.94) |
 | nemotron-3.5-lightning-nvfp4 | preload | academy | 9/9 (1.00) |
 | nemotron-3.5-lightning-nvfp4 | preload | literature-search | 9/9 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | disclosure | amsc-skills | 52/63 (0.83) |
+| nemotron-3.5-super-vl-nvfp4 | disclosure | academy | 8/9 (0.89) |
+| nemotron-3.5-super-vl-nvfp4 | disclosure | basesafe-skills | 48/54 (0.89) |
+| nemotron-3.5-super-vl-nvfp4 | disclosure | hpc-skills | 41/45 (0.91) |
+| nemotron-3.5-super-vl-nvfp4 | disclosure | basedata-skills | 45/45 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | disclosure | baseeval-skills | 72/72 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | disclosure | literature-search | 9/9 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | disclosure | multi-agent-systems | 9/9 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | disclosure | plasma-sim-skills | 18/18 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | preload-anchor | amsc-skills | 58/63 (0.92) |
+| nemotron-3.5-super-vl-nvfp4 | preload-anchor | baseeval-skills | 67/72 (0.93) |
+| nemotron-3.5-super-vl-nvfp4 | preload-anchor | hpc-skills | 43/45 (0.96) |
+| nemotron-3.5-super-vl-nvfp4 | preload-anchor | basesafe-skills | 53/54 (0.98) |
+| nemotron-3.5-super-vl-nvfp4 | preload-anchor | academy | 9/9 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | preload-anchor | basedata-skills | 45/45 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | preload-anchor | literature-search | 9/9 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | preload-anchor | multi-agent-systems | 9/9 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | preload-anchor | plasma-sim-skills | 18/18 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | preload | baseeval-skills | 67/72 (0.93) |
+| nemotron-3.5-super-vl-nvfp4 | preload | amsc-skills | 62/63 (0.98) |
+| nemotron-3.5-super-vl-nvfp4 | preload | academy | 9/9 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | preload | basedata-skills | 45/45 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | preload | basesafe-skills | 54/54 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | preload | hpc-skills | 45/45 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | preload | literature-search | 9/9 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | preload | multi-agent-systems | 9/9 (1.00) |
+| nemotron-3.5-super-vl-nvfp4 | preload | plasma-sim-skills | 18/18 (1.00) |
 
 ## Top confusions (all models/conditions pooled)
 
 | required | selected instead | count |
 |---|---|---|
-| pbs | slurm | 21 |
-| i2-api | amsc-mag | 19 |
-| ai-fingerprint | fingerprinting | 12 |
+| i2-api | amsc-mag | 27 |
+| pbs | slurm | 24 |
+| ai-fingerprint | fingerprinting | 19 |
+| globus-compute | perlmutter | 15 |
 | iri-api | amsc-python-client | 10 |
 | amsc-python-client | perlmutter | 10 |
-| globus-compute | perlmutter | 10 |
 | uncertainty-quantification | <nothing> | 10 |
+| configuration-planner | configuration-creator | 9 |
 | amsc-python-client | aurora | 7 |
 | configuration-tester | <nothing> | 7 |
 | configuration-creator | configuration-planner | 7 |
+| amsc-python-client | iri-api | 6 |
 | iri-api | perlmutter | 6 |
 | battleprint | agentic-vulnerabilities-scan | 4 |
-| configuration-creator | data-exploration | 4 |
-| agentic-vulnerabilities-scan | <nothing> | 4 |
-| pbs | <nothing> | 4 |
+| slurm | pbs | 4 |
