@@ -96,7 +96,7 @@ Model performs the task with the required SKILL.md in context; GLM-5.3-Flash jud
 ## Next steps
 
 1. Tool-loop harness (sandboxed bash/file tools) for faithful execution scoring.
-2. Closed-model baseline (Claude/GPT on identical harness) — needed for the open-vs-closed claim.
+2. ~~Closed-model baseline~~ Done 11-05: raw-API GPT-5.2, Claude Sonnet/Opus 5.5, Gemini 3.5 Flash via OpenRouter (see above).
 3. Human-audited task set (~150, multi-label).
 4. Serving feature: `skills:` parameter with server-side preload + cache + anchor injection — this report is the empirical justification.
 5. Upstream PR: description fixes for confused skill pairs + this harness.
@@ -105,9 +105,9 @@ Model performs the task with the required SKILL.md in context; GLM-5.3-Flash jud
 
 ### To Nathan Hodas / Stefan Wild (BASE, ModCon)
 
-Subject: Measured skill-activation data for genesis-skills — collaboration?
+Subject: Measured skill-routing data for genesis-skills across 9 models — findings + harness contribution
 
-We built an activation/compliance eval for the genesis-skills catalog and ran it across four open models on our serving stack (3 conditions × 3 trials × 120 tasks). Three results you may find useful: (1) with 1M-context models, preloading the full catalog beats progressive disclosure — but only with a format anchor, otherwise output-protocol compliance drops 44%; (2) models differ sharply on precision vs recall in skill routing; (3) the eval surfaces catalog-level routing hazards (pbs/slurm, ai-fingerprint/fingerprinting confusions) we'd like to fix upstream. Harness + data attached; happy to contribute it via PR and align with whatever BASE is already measuring before we write anything up. — Prasanna
+Nathan, Stefan — We built an activation/compliance eval for the genesis-skills catalog and ran it across nine models (Nemotron 3.5 Lightning/Super VL, GLM, MiMo, GPT-5.2, Claude Sonnet/Opus 5.5, Gemini 3.5 Flash) — raw APIs, temperature 0, 3 trials, 120 labeled tasks against all 36 skills. Four results you may find useful: (1) full-catalog preload beats progressive disclosure for all nine models (+11–18pp exact-match) — the spec might want a documented preload mode, since with 1M-context models and prompt caching the context economy disclosure buys no longer binds; (2) a capacity-dependent failure mode under preload worth documenting: mid-tier models (Nemotron Lightning, GPT-5.2) break the routing output protocol on off-catalog requests with ~63k tokens of skill instructions in context (up to 44% of distractors) — a one-line format reminder eliminates it, cross-vendor; (3) the eval surfaced catalog-level routing hazards — pbs→slurm (21 confusions), ai-fingerprint→fingerprinting (12, near-duplicate descriptions), i2-api→amsc-mag (19) — we'd like to contribute description fixes upstream plus the harness itself so skill PRs can be routing-regression-tested; (4) for your awareness given the Genesis open-model direction: on this catalog, Nemotron 3.5 Super VL posted the highest exact-match routing of anything we measured, including the closed frontier models, on both our serving stack and neutral third-party serving. Harness, raw data, and analysis ready to share (happy to PR via GitHub per CONTRIBUTING.md). Before we write anything up publicly we'd like to align with whatever BASE is already measuring — and we'd welcome co-authorship if there's overlap. — Prasanna
 
 ### To Tom Danielson (SRNL)
 
