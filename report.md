@@ -48,6 +48,26 @@ Run through Codex CLI (`gpt-6-astra`, ChatGPT subscription) and Claude Code CLI 
 
 Two additions to the findings: (a) **Nemotron 3.5 Super VL posts the highest exact-match routing of anything measured, including frontier closed models run through their native CLIs — by ~20pp.** Closed models share the open-peer pattern: near-perfect recall, lower precision (GPT selects 2.0 skills/task under disclosure). (b) **Full-catalog preload beat metadata-only disclosure for every one of the six models** (for Lightning, once format discipline is restored via the anchor) — progressive disclosure consistently costs routing accuracy; its remaining justification is context economy, not quality. Raw-API closed-model runs (OpenRouter) remain the publication-grade follow-up.
 
+### Raw-API frontier baselines via OpenRouter (added 11-05, publication-grade)
+
+Temperature 0, 3 trials, identical harness, pinned model ids, ~$60 total. Mean exact-match of best config per model:
+
+| model | best config | exact | recall | notes |
+|---|---|---|---|---|
+| **nemotron-3.5-super-vl (PrimaLabs NVFP4)** | preload | **0.830** | 0.981 | our serving |
+| **nemotron-3.5-super-vl (OpenRouter)** | preload / preload-anchor | **0.753** | 0.938 | independent serving, provider unpinned |
+| openai/gpt-5.2 | preload-anchor | 0.716 | 0.947 | raw preload leaks 8–25% distractor false-acts; anchor fixes |
+| anthropic/claude-opus-5.5 | preload | 0.679 | 0.997 | flagship; preload-only run |
+| google/gemini-3.5-flash | preload | 0.663 | 0.978 | anchor slightly hurts |
+| anthropic/claude-sonnet-5.5 | preload-anchor | 0.639 | 0.994 | raw ≈ CLI numbers (±1pp) |
+
+Conclusions this locks in:
+1. **Super VL ranks #1 on both serving stacks, including over Claude Opus 5.5.** Margin is serving-dependent: +3.7pp over GPT-5.2 on neutral infrastructure, +11.4pp on PrimaLabs NVFP4. Report the model-level claim from the OpenRouter number; the 0.830 is a system-level (model+serving) result.
+2. **Serving measurably affects routing quality** (0.830 vs 0.753 for the identical model) — provider choice, quantization, and template are part of agentic accuracy, not just speed.
+3. **The instruction-mass format-break is cross-vendor:** raw GPT-5.2 reproduces the Lightning failure under preload (distractor false-activation up to 25%), eliminated by the same one-line anchor. Capacity-dependent, not vendor- or openness-dependent.
+4. **Preload ≥ disclosure for all 9 models tested** across NVIDIA, OpenAI, Anthropic, Google, Zhipu, Xiaomi.
+5. **Raw API ≈ CLI for Claude (±1pp); raw GPT-5.2 beats its Codex-mediated cousin (0.716 vs 0.648)** — harness mediation is not neutral for OpenAI.
+
 ## Findings
 
 1. **Full-catalog preload breaks Nemotron's output discipline; a one-line anchor fixes it and unlocks the gains.** Raw preload caused 44% of distractor tasks to break the JSON routing contract — the model answered the question directly instead of routing (e.g., wrote the Python function instead of `{"skills": []}`). It never selected a *wrong* skill; the failure is protocol compliance under 63k tokens of instruction mass, not routing. Appending `Remember: reply with JSON only…` to the user turn eliminated every break **and** made preload-anchor Nemotron's best condition on all metrics (+6pp recall, +6pp exact over standard disclosure). Implication: with long-context models, skip progressive disclosure, preload + cache the full catalog, and inject a format anchor at the serving layer.
