@@ -76,14 +76,29 @@ def _cli_chat(model: str, messages, retries=3):
 
 
 def chat(messages, model=LIGHTNING, temperature=0.0, max_tokens=2048, retries=6):
+    if model.startswith("cli/"):
+        return _cli_chat(model, messages)
+    if model.startswith("anthropic/"):
+        # OpenRouter passes Anthropic cache_control through: mark the (large,
+        # identical-across-calls) system block as cacheable. OpenAI/Gemini
+        # cache repeated prefixes automatically.
+        messages = [
+            {
+                "role": m["role"],
+                "content": [
+                    {"type": "text", "text": m["content"], "cache_control": {"type": "ephemeral"}}
+                ],
+            }
+            if m["role"] == "system"
+            else m
+            for m in messages
+        ]
     payload = {
         "model": model,
         "messages": messages,
         "temperature": temperature,
         "max_tokens": max_tokens,
     }
-    if model.startswith("cli/"):
-        return _cli_chat(model, messages)
     base_url, api_key = _provider(model)
     req = urllib.request.Request(
         f"{base_url}/chat/completions",
