@@ -125,7 +125,7 @@ def chat(messages, model=LIGHTNING, temperature=0.0, max_tokens=2048, retries=6)
                 time.sleep(min(15 * (attempt + 1), 60))
             else:
                 time.sleep(2**attempt)
-        except (urllib.error.URLError, KeyError, json.JSONDecodeError) as e:
+        except (OSError, KeyError, json.JSONDecodeError) as e:
             last_err = e
             time.sleep(2**attempt)
     raise RuntimeError(f"chat failed after {retries} retries: {last_err}")

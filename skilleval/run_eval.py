@@ -85,6 +85,7 @@ def main():
     ap.add_argument("--limit", type=int, default=0, help="limit tasks (pilot)")
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--trials", type=int, default=1)
+    ap.add_argument("--resume", action="store_true", help="skip existing result files")
     args = ap.parse_args()
 
     catalog = load_catalog()
@@ -101,11 +102,16 @@ def main():
         block = block_fn(catalog)
         summary[cond] = []
         for trial in range(args.trials):
+            out = RESULTS / f"{slug}.{cond}.t{trial}.jsonl"
+            if args.resume and out.exists():
+                rows = [json.loads(l) for l in out.read_text().splitlines()]
+                summary[cond].append(metrics(rows))
+                print(f"[{slug} {cond} t{trial}] resumed from disk", file=sys.stderr)
+                continue
             with ThreadPoolExecutor(max_workers=args.workers) as pool:
                 rows = list(
                     pool.map(lambda t: evaluate(t, block, args.model, anchor=anchor), tasks)
                 )
-            out = RESULTS / f"{slug}.{cond}.t{trial}.jsonl"
             with out.open("w") as f:
                 for r in rows:
                     f.write(json.dumps(r) + "\n")
