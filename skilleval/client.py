@@ -75,7 +75,7 @@ def _cli_chat(model: str, messages, retries=3):
     raise RuntimeError(f"{backend} cli empty after {retries} tries: {proc.stderr[-300:]}")
 
 
-def chat(messages, model=LIGHTNING, temperature=0.0, max_tokens=2048, retries=6):
+def chat(messages, model=LIGHTNING, temperature=0.0, max_tokens=2048, retries=10):
     if model.startswith("cli/"):
         return _cli_chat(model, messages)
     if model.startswith("anthropic/"):
@@ -127,7 +127,7 @@ def chat(messages, model=LIGHTNING, temperature=0.0, max_tokens=2048, retries=6)
                 time.sleep(2**attempt)
         except (OSError, KeyError, json.JSONDecodeError) as e:
             last_err = e
-            time.sleep(2**attempt)
+            time.sleep(min(2**attempt, 120))
     raise RuntimeError(f"chat failed after {retries} retries: {last_err}")
 
 

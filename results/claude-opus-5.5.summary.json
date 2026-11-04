@@ -1,0 +1,31 @@
+{
+  "preload": [
+    {
+      "n_skill_tasks": 108,
+      "n_distractors": 12,
+      "recall": 1.0,
+      "exact_match": 0.676,
+      "precision": 0.701,
+      "avg_selected": 1.43,
+      "false_activation_rate": 0.0
+    },
+    {
+      "n_skill_tasks": 108,
+      "n_distractors": 12,
+      "recall": 1.0,
+      "exact_match": 0.676,
+      "precision": 0.701,
+      "avg_selected": 1.43,
+      "false_activation_rate": 0.0
+    },
+    {
+      "n_skill_tasks": 108,
+      "n_distractors": 12,
+      "recall": 0.991,
+      "exact_match": 0.685,
+      "precision": 0.699,
+      "avg_selected": 1.42,
+      "false_activation_rate": 0.0
+    }
+  ]
+}

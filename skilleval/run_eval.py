@@ -35,14 +35,17 @@ ANCHOR = '\n\nRemember: reply with JSON only, {"skills": [...]} — do not answe
 
 def evaluate(task_row, skills_block, model, anchor=False):
     user = task_row["task"] + (ANCHOR if anchor else "")
-    reply = chat(
-        [
-            {"role": "system", "content": SYSTEM.format(skills_block=skills_block)},
-            {"role": "user", "content": user},
-        ],
-        model=model,
-        max_tokens=16384,
-    )
+    try:
+        reply = chat(
+            [
+                {"role": "system", "content": SYSTEM.format(skills_block=skills_block)},
+                {"role": "user", "content": user},
+            ],
+            model=model,
+            max_tokens=16384,
+        )
+    except RuntimeError as e:
+        return {**task_row, "selected": ["<error>"], "raw": str(e)[:300]}
     try:
         selected = extract_json(reply).get("skills", [])
         if not isinstance(selected, list):
