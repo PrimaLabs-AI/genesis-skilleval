@@ -25,8 +25,16 @@ def _load_env() -> dict:
 
 
 _ENV = _load_env()
-BASE_URL = _ENV["PRIMALABS_BASE_URL"].rstrip("/")
-API_KEY = _ENV["PRIMALABS_API_KEY"]
+
+
+def _provider(model: str):
+    """Route by model id: primalabs-ai/* -> PrimaLabs, everything else -> OpenRouter."""
+    if model.startswith("primalabs-ai/"):
+        return _ENV["PRIMALABS_BASE_URL"].rstrip("/"), _ENV["PRIMALABS_API_KEY"]
+    key = _ENV.get("OPENROUTER_API_KEY")
+    if not key:
+        raise RuntimeError("OPENROUTER_API_KEY not set in .env (needed for non-PrimaLabs models)")
+    return "https://openrouter.ai/api/v1", key
 
 
 def chat(messages, model=LIGHTNING, temperature=0.0, max_tokens=2048, retries=6):
@@ -36,11 +44,12 @@ def chat(messages, model=LIGHTNING, temperature=0.0, max_tokens=2048, retries=6)
         "temperature": temperature,
         "max_tokens": max_tokens,
     }
+    base_url, api_key = _provider(model)
     req = urllib.request.Request(
-        f"{BASE_URL}/chat/completions",
+        f"{base_url}/chat/completions",
         data=json.dumps(payload).encode(),
         headers={
-            "Authorization": f"Bearer {API_KEY}",
+            "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
         },
     )
