@@ -17,6 +17,9 @@
 | nemotron-3.5-super-vl-nvfp4 | disclosure | 0.932±0.019 | 0.645±0.005 | 0.648±0.012 | 0.000±0.000 | 0.000±0.000 |
 | nemotron-3.5-super-vl-nvfp4 | preload-anchor | 0.960±0.019 | 0.793±0.005 | 0.734±0.013 | 0.000±0.000 | 0.000±0.000 |
 | nemotron-3.5-super-vl-nvfp4 | preload | 0.981±0.009 | 0.830±0.019 | 0.824±0.014 | 0.028±0.048 | 0.003±0.005 |
+| sonnet | disclosure | 0.935±0.000 | 0.583±0.000 | 0.620±0.000 | 0.000±0.000 | 0.000±0.000 |
+| sonnet | preload-anchor | 0.972±0.000 | 0.620±0.000 | 0.652±0.000 | 0.000±0.000 | 0.000±0.000 |
+| sonnet | preload | 0.981±0.000 | 0.630±0.000 | 0.684±0.000 | 0.000±0.000 | 0.000±0.000 |
 
 ## Per-domain recall (worst first)
 
@@ -157,23 +160,50 @@
 | nemotron-3.5-super-vl-nvfp4 | preload | literature-search | 9/9 (1.00) |
 | nemotron-3.5-super-vl-nvfp4 | preload | multi-agent-systems | 9/9 (1.00) |
 | nemotron-3.5-super-vl-nvfp4 | preload | plasma-sim-skills | 18/18 (1.00) |
+| sonnet | disclosure | hpc-skills | 13/15 (0.87) |
+| sonnet | disclosure | amsc-skills | 19/21 (0.90) |
+| sonnet | disclosure | baseeval-skills | 22/24 (0.92) |
+| sonnet | disclosure | basesafe-skills | 17/18 (0.94) |
+| sonnet | disclosure | academy | 3/3 (1.00) |
+| sonnet | disclosure | basedata-skills | 15/15 (1.00) |
+| sonnet | disclosure | literature-search | 3/3 (1.00) |
+| sonnet | disclosure | multi-agent-systems | 3/3 (1.00) |
+| sonnet | disclosure | plasma-sim-skills | 6/6 (1.00) |
+| sonnet | preload-anchor | hpc-skills | 14/15 (0.93) |
+| sonnet | preload-anchor | basesafe-skills | 17/18 (0.94) |
+| sonnet | preload-anchor | amsc-skills | 20/21 (0.95) |
+| sonnet | preload-anchor | academy | 3/3 (1.00) |
+| sonnet | preload-anchor | basedata-skills | 15/15 (1.00) |
+| sonnet | preload-anchor | baseeval-skills | 24/24 (1.00) |
+| sonnet | preload-anchor | literature-search | 3/3 (1.00) |
+| sonnet | preload-anchor | multi-agent-systems | 3/3 (1.00) |
+| sonnet | preload-anchor | plasma-sim-skills | 6/6 (1.00) |
+| sonnet | preload | hpc-skills | 14/15 (0.93) |
+| sonnet | preload | amsc-skills | 20/21 (0.95) |
+| sonnet | preload | academy | 3/3 (1.00) |
+| sonnet | preload | basedata-skills | 15/15 (1.00) |
+| sonnet | preload | baseeval-skills | 24/24 (1.00) |
+| sonnet | preload | basesafe-skills | 18/18 (1.00) |
+| sonnet | preload | literature-search | 3/3 (1.00) |
+| sonnet | preload | multi-agent-systems | 3/3 (1.00) |
+| sonnet | preload | plasma-sim-skills | 6/6 (1.00) |
 
 ## Top confusions (all models/conditions pooled)
 
 | required | selected instead | count |
 |---|---|---|
+| pbs | slurm | 28 |
 | i2-api | amsc-mag | 27 |
-| pbs | slurm | 24 |
-| ai-fingerprint | fingerprinting | 20 |
-| globus-compute | perlmutter | 15 |
+| ai-fingerprint | fingerprinting | 22 |
+| globus-compute | perlmutter | 18 |
+| configuration-planner | configuration-creator | 11 |
 | iri-api | amsc-python-client | 10 |
 | amsc-python-client | perlmutter | 10 |
 | uncertainty-quantification | <nothing> | 10 |
-| configuration-planner | configuration-creator | 9 |
+| amsc-python-client | iri-api | 7 |
 | amsc-python-client | aurora | 7 |
 | configuration-tester | <nothing> | 7 |
 | configuration-creator | configuration-planner | 7 |
-| amsc-python-client | iri-api | 6 |
 | iri-api | perlmutter | 6 |
 | battleprint | agentic-vulnerabilities-scan | 4 |
 | slurm | pbs | 4 |

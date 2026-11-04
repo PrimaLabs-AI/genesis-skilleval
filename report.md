@@ -31,6 +31,23 @@ Conditions:
 
 recall = required skill among selected; exact = selected exactly the required skill; precision = hits / total selections; false-act = any selection (incl. protocol break) on distractor tasks; unparseable = reply violated the JSON routing contract.
 
+### Closed-model baselines via subscription CLIs (added 11-05, harness-level)
+
+Run through Codex CLI (`gpt-6-astra`, ChatGPT subscription) and Claude Code CLI (`sonnet` alias, v2.1.274, tools disabled). These CLIs inject their own scaffolding and don't expose temperature: numbers are **harness-level**, single trial, kept out of the model-level table above.
+
+| model | condition | recall | exact | precision | false-act |
+|---|---|---|---|---|---|
+| gpt-6-astra (Codex) | disclosure | 0.991 | 0.472 | 0.498 | 0.000 |
+| gpt-6-astra (Codex) | preload | 1.000 | 0.620 | 0.643 | 0.000 |
+| gpt-6-astra (Codex) | preload-anchor | 1.000 | 0.648 | 0.659 | 0.083 |
+| claude sonnet (CC) | disclosure | 0.935 | 0.583 | 0.620 | 0.000 |
+| claude sonnet (CC) | preload | 0.981 | 0.630 | 0.684 | 0.000 |
+| claude sonnet (CC) | preload-anchor | 0.972 | 0.620 | 0.652 | 0.000 |
+
+**Leaderboard by exact-match (best config per model):** Super VL preload 0.830 · Lightning preload-anchor 0.738 · GLM preload 0.657 · gpt-6-astra preload-anchor 0.648 · claude sonnet preload 0.630 · MiMo preload 0.543.
+
+Two additions to the findings: (a) **Nemotron 3.5 Super VL posts the highest exact-match routing of anything measured, including frontier closed models run through their native CLIs — by ~20pp.** Closed models share the open-peer pattern: near-perfect recall, lower precision (GPT selects 2.0 skills/task under disclosure). (b) **Full-catalog preload beat metadata-only disclosure for every one of the six models** (for Lightning, once format discipline is restored via the anchor) — progressive disclosure consistently costs routing accuracy; its remaining justification is context economy, not quality. Raw-API closed-model runs (OpenRouter) remain the publication-grade follow-up.
+
 ## Findings
 
 1. **Full-catalog preload breaks Nemotron's output discipline; a one-line anchor fixes it and unlocks the gains.** Raw preload caused 44% of distractor tasks to break the JSON routing contract — the model answered the question directly instead of routing (e.g., wrote the Python function instead of `{"skills": []}`). It never selected a *wrong* skill; the failure is protocol compliance under 63k tokens of instruction mass, not routing. Appending `Remember: reply with JSON only…` to the user turn eliminated every break **and** made preload-anchor Nemotron's best condition on all metrics (+6pp recall, +6pp exact over standard disclosure). Implication: with long-context models, skip progressive disclosure, preload + cache the full catalog, and inject a format anchor at the serving layer.

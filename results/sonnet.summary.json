@@ -1,0 +1,35 @@
+{
+  "disclosure": [
+    {
+      "n_skill_tasks": 108,
+      "n_distractors": 12,
+      "recall": 0.935,
+      "exact_match": 0.583,
+      "precision": 0.62,
+      "avg_selected": 1.51,
+      "false_activation_rate": 0.0
+    }
+  ],
+  "preload": [
+    {
+      "n_skill_tasks": 108,
+      "n_distractors": 12,
+      "recall": 0.981,
+      "exact_match": 0.63,
+      "precision": 0.684,
+      "avg_selected": 1.44,
+      "false_activation_rate": 0.0
+    }
+  ],
+  "preload-anchor": [
+    {
+      "n_skill_tasks": 108,
+      "n_distractors": 12,
+      "recall": 0.972,
+      "exact_match": 0.62,
+      "precision": 0.652,
+      "avg_selected": 1.49,
+      "false_activation_rate": 0.0
+    }
+  ]
+}
