@@ -37,6 +37,44 @@ def _provider(model: str):
     return "https://openrouter.ai/api/v1", key
 
 
+def _cli_chat(model: str, messages, retries=3):
+    """Subscription-billed backends via local CLIs.
+
+    model = "cli/codex/<model>" (ChatGPT subscription) or "cli/claude/<model>"
+    (Claude subscription; requires `claude login`). The CLIs are agent
+    harnesses, not raw APIs: results are harness-level comparisons.
+    """
+    import subprocess
+    import tempfile
+
+    _, backend, name = model.split("/", 2)
+    system = "\n\n".join(m["content"] for m in messages if m["role"] == "system")
+    user = "\n\n".join(m["content"] for m in messages if m["role"] == "user")
+    for attempt in range(retries):
+        if backend == "codex":
+            with tempfile.NamedTemporaryFile(mode="r", suffix=".txt") as out:
+                proc = subprocess.run(
+                    ["codex", "exec", "--skip-git-repo-check", "--sandbox", "read-only",
+                     "-m", name, "--output-last-message", out.name,
+                     f"{system}\n\n<user_request>\n{user}\n</user_request>"],
+                    capture_output=True, text=True, timeout=600,
+                )
+                reply = out.read().strip()
+        elif backend == "claude":
+            proc = subprocess.run(
+                ["claude", "-p", "--model", name, "--strict-mcp-config",
+                 "--disallowedTools", "*", "--system-prompt", system, user],
+                capture_output=True, text=True, timeout=600,
+            )
+            reply = proc.stdout.strip()
+        else:
+            raise ValueError(f"unknown cli backend: {backend}")
+        if reply:
+            return reply
+        time.sleep(5 * (attempt + 1))
+    raise RuntimeError(f"{backend} cli empty after {retries} tries: {proc.stderr[-300:]}")
+
+
 def chat(messages, model=LIGHTNING, temperature=0.0, max_tokens=2048, retries=6):
     payload = {
         "model": model,
@@ -44,6 +82,8 @@ def chat(messages, model=LIGHTNING, temperature=0.0, max_tokens=2048, retries=6)
         "temperature": temperature,
         "max_tokens": max_tokens,
     }
+    if model.startswith("cli/"):
+        return _cli_chat(model, messages)
     base_url, api_key = _provider(model)
     req = urllib.request.Request(
         f"{base_url}/chat/completions",
