@@ -15,6 +15,20 @@ No one had measured it. We built the first routing benchmark for the Genesis cat
 **1. The best router on DOE's catalog is an open, U.S.-developed model.**
 NVIDIA's open-weight Nemotron 3.5 Super VL scored highest on exact-match routing of all nine models — above GPT-5.2, Claude Opus 5.5, and Gemini 3.5 Flash — on neutral third-party serving (0.753 vs 0.716 for the best closed model) and by a wider margin on optimized serving (0.830). Closed frontier models found the right skill but consistently over-activated, selecting 1.4–2.0 skills per request; the open model activated 1.2. This matters because the Genesis Mission's hardest deployments — air-gapped enclaves, export-controlled data — are places closed-model APIs cannot go at all. The result says the open-model path carries **no capability penalty** for skill-governed science agents. Sovereignty and performance are not in tension.
 
+| model | serving | exact-match routing | skills activated per task |
+|---|---|---|---|
+| **Nemotron 3.5 Super VL** (open) | PrimaLabs (NVFP4) | **0.830** | 1.2 |
+| **Nemotron 3.5 Super VL** (open) | OpenRouter (neutral) | **0.753** | 1.2 |
+| Nemotron 3.5 Lightning (open) | PrimaLabs | 0.738 | 1.2 |
+| GPT-5.2 | OpenRouter | 0.716 | 1.3 |
+| Claude Opus 5.5 | OpenRouter | 0.679 | 1.4 |
+| Gemini 3.5 Flash | OpenRouter | 0.663 | 1.4 |
+| GLM-5.3-Flash (open) | PrimaLabs | 0.657 | 1.5 |
+| Claude Sonnet 5.5 | OpenRouter | 0.639 | 1.5 |
+| MiMo-V2.6-Pro (open) | PrimaLabs | 0.543 | 1.6 |
+
+*Best configuration per model; mean of 3 trials at temperature 0; exact-match = activated precisely the required skill and nothing else. Full per-condition tables in the benchmark report.*
+
 **2. How skills are loaded changes how well they work — for every model.**
 The skill standard loads only a skill's name and one-line description at routing time, to save context. We found that preloading the *full instructions* of all 36 skills (~63k tokens, cached) improved routing accuracy for **all nine models, by 11–18 points**. Long-context models and cheap cached serving have quietly removed the constraint the convention was designed around. For Genesis, this is actionable today: a one-line change to how skills are served makes every agent in the ecosystem more accurate, at near-zero marginal cost.
 
