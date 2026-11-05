@@ -24,6 +24,9 @@
 | nemotron-3.5-lightning-nvfp4 | disclosure | 0.793±0.005 | 0.682±0.019 | 0.681±0.037 | 0.000±0.000 | 0.000±0.000 |
 | nemotron-3.5-lightning-nvfp4 | preload-anchor | 0.855±0.019 | 0.738±0.027 | 0.749±0.062 | 0.000±0.000 | 0.000±0.000 |
 | nemotron-3.5-lightning-nvfp4 | preload | 0.747±0.033 | 0.660±0.019 | 0.692±0.034 | 0.444±0.048 | 0.114±0.013 |
+| nemotron-3.5-lightning | disclosure | 0.719±0.023 | 0.620±0.009 | 0.601±0.020 | 0.028±0.048 | 0.008±0.008 |
+| nemotron-3.5-lightning | preload-anchor | 0.827±0.019 | 0.707±0.005 | 0.634±0.060 | 0.028±0.048 | 0.039±0.017 |
+| nemotron-3.5-lightning | preload | 0.707±0.062 | 0.636±0.023 | 0.654±0.035 | 0.389±0.127 | 0.172±0.060 |
 | nemotron-3.5-super-vl-nvfp4 | disclosure | 0.932±0.019 | 0.645±0.005 | 0.648±0.012 | 0.000±0.000 | 0.000±0.000 |
 | nemotron-3.5-super-vl-nvfp4 | preload-anchor | 0.960±0.019 | 0.793±0.005 | 0.734±0.013 | 0.000±0.000 | 0.000±0.000 |
 | nemotron-3.5-super-vl-nvfp4 | preload | 0.981±0.009 | 0.830±0.019 | 0.824±0.014 | 0.028±0.048 | 0.003±0.005 |
@@ -236,6 +239,33 @@
 | nemotron-3.5-lightning-nvfp4 | preload | plasma-sim-skills | 17/18 (0.94) |
 | nemotron-3.5-lightning-nvfp4 | preload | academy | 9/9 (1.00) |
 | nemotron-3.5-lightning-nvfp4 | preload | literature-search | 9/9 (1.00) |
+| nemotron-3.5-lightning | disclosure | academy | 3/9 (0.33) |
+| nemotron-3.5-lightning | disclosure | plasma-sim-skills | 8/18 (0.44) |
+| nemotron-3.5-lightning | disclosure | basesafe-skills | 32/54 (0.59) |
+| nemotron-3.5-lightning | disclosure | hpc-skills | 29/45 (0.64) |
+| nemotron-3.5-lightning | disclosure | amsc-skills | 41/63 (0.65) |
+| nemotron-3.5-lightning | disclosure | baseeval-skills | 61/72 (0.85) |
+| nemotron-3.5-lightning | disclosure | basedata-skills | 41/45 (0.91) |
+| nemotron-3.5-lightning | disclosure | literature-search | 9/9 (1.00) |
+| nemotron-3.5-lightning | disclosure | multi-agent-systems | 9/9 (1.00) |
+| nemotron-3.5-lightning | preload-anchor | multi-agent-systems | 6/9 (0.67) |
+| nemotron-3.5-lightning | preload-anchor | amsc-skills | 45/63 (0.71) |
+| nemotron-3.5-lightning | preload-anchor | hpc-skills | 33/45 (0.73) |
+| nemotron-3.5-lightning | preload-anchor | basesafe-skills | 43/54 (0.80) |
+| nemotron-3.5-lightning | preload-anchor | baseeval-skills | 65/72 (0.90) |
+| nemotron-3.5-lightning | preload-anchor | basedata-skills | 41/45 (0.91) |
+| nemotron-3.5-lightning | preload-anchor | plasma-sim-skills | 17/18 (0.94) |
+| nemotron-3.5-lightning | preload-anchor | academy | 9/9 (1.00) |
+| nemotron-3.5-lightning | preload-anchor | literature-search | 9/9 (1.00) |
+| nemotron-3.5-lightning | preload | amsc-skills | 39/63 (0.62) |
+| nemotron-3.5-lightning | preload | hpc-skills | 29/45 (0.64) |
+| nemotron-3.5-lightning | preload | basesafe-skills | 35/54 (0.65) |
+| nemotron-3.5-lightning | preload | baseeval-skills | 50/72 (0.69) |
+| nemotron-3.5-lightning | preload | basedata-skills | 36/45 (0.80) |
+| nemotron-3.5-lightning | preload | academy | 8/9 (0.89) |
+| nemotron-3.5-lightning | preload | literature-search | 8/9 (0.89) |
+| nemotron-3.5-lightning | preload | multi-agent-systems | 8/9 (0.89) |
+| nemotron-3.5-lightning | preload | plasma-sim-skills | 16/18 (0.89) |
 | nemotron-3.5-super-vl-nvfp4 | disclosure | amsc-skills | 52/63 (0.83) |
 | nemotron-3.5-super-vl-nvfp4 | disclosure | academy | 8/9 (0.89) |
 | nemotron-3.5-super-vl-nvfp4 | disclosure | basesafe-skills | 48/54 (0.89) |
@@ -322,18 +352,18 @@
 
 | required | selected instead | count |
 |---|---|---|
-| pbs | slurm | 45 |
-| i2-api | amsc-mag | 34 |
-| globus-compute | perlmutter | 30 |
-| ai-fingerprint | fingerprinting | 25 |
-| configuration-planner | configuration-creator | 24 |
+| pbs | slurm | 55 |
+| i2-api | amsc-mag | 46 |
+| globus-compute | perlmutter | 40 |
+| ai-fingerprint | fingerprinting | 28 |
+| iri-api | amsc-python-client | 27 |
+| configuration-planner | configuration-creator | 27 |
 | data-exploration | configuration-creator | 19 |
-| iri-api | amsc-python-client | 19 |
-| amsc-python-client | iri-api | 17 |
-| globus-compute | iri-api | 12 |
-| amsc-python-client | perlmutter | 12 |
-| amsc-python-client | pbs | 11 |
-| skill-creator | <nothing> | 11 |
-| uncertainty-quantification | <nothing> | 11 |
-| globus-compute | amsc-python-client | 10 |
-| iri-api | perlmutter | 9 |
+| amsc-python-client | perlmutter | 19 |
+| amsc-python-client | iri-api | 18 |
+| uncertainty-quantification | <nothing> | 16 |
+| iri-api | perlmutter | 15 |
+| amsc-python-client | aurora | 14 |
+| globus-compute | amsc-python-client | 13 |
+| battleprint | agentic-vulnerabilities-scan | 13 |
+| configuration-creator | configuration-planner | 13 |

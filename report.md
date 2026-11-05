@@ -56,6 +56,8 @@ Temperature 0, 3 trials, identical harness, pinned model ids, ~$60 total. Mean e
 |---|---|---|---|---|
 | **nemotron-3.5-super-vl (PrimaLabs NVFP4)** | preload | **0.830** | 0.981 | our serving |
 | **nemotron-3.5-super-vl (OpenRouter)** | preload / preload-anchor | **0.753** | 0.938 | independent serving, provider unpinned |
+| nemotron-3.5-lightning (PrimaLabs NVFP4) | preload-anchor | 0.738 | 0.855 | our serving |
+| nemotron-3.5-lightning (OpenRouter) | preload-anchor | 0.707 | 0.827 | format-break replicates: preload false-act 0.25–0.50/trial, anchor → ~0.03 |
 | openai/gpt-5.2 | preload-anchor | 0.716 | 0.947 | raw preload leaks 8–25% distractor false-acts; anchor fixes |
 | anthropic/claude-opus-5.5 | preload | 0.679 | 0.997 | flagship; preload-only run |
 | google/gemini-3.5-flash | preload | 0.663 | 0.978 | anchor slightly hurts |

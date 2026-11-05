@@ -21,6 +21,7 @@ NVIDIA's open-weight Nemotron 3.5 Super VL scored highest on exact-match routing
 | **Nemotron 3.5 Super VL** (open) | OpenRouter (neutral) | **0.753** | 1.2 |
 | Nemotron 3.5 Lightning (open) | PrimaLabs | 0.738 | 1.2 |
 | GPT-5.2 | OpenRouter | 0.716 | 1.3 |
+| Nemotron 3.5 Lightning (open) | OpenRouter (neutral) | 0.707 | 1.3 |
 | Claude Opus 5.5 | OpenRouter | 0.679 | 1.4 |
 | Gemini 3.5 Flash | OpenRouter | 0.663 | 1.4 |
 | GLM-5.3-Flash (open) | PrimaLabs | 0.657 | 1.5 |
