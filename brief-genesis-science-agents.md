@@ -1,5 +1,5 @@
 # Why Skill Routing Decides Whether Science Agents Can Be Trusted
-### What the first benchmark of DOE's Genesis Agent Skills tells us about building AI agents for science
+### Genesis-SkillEval, the first benchmark of DOE's Genesis Agent Skills — and what it tells us about building AI agents for science
 *PrimaLabs · November 2026*
 
 ## The problem nobody benchmarks
