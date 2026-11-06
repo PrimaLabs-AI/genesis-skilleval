@@ -17,8 +17,12 @@ git -C genesis-skills fetch -q origin && git -C genesis-skills checkout -q "$CAT
 echo "catalog pinned to $CATALOG_COMMIT"
 
 # 2. Sanity-check catalog parsing (expect 36 skills).
-python3 skilleval/catalog.py | head -3
-
+python3 -c "
+import sys; sys.path.insert(0, 'skilleval')
+from catalog import load_catalog
+n = len(load_catalog())
+assert n == 36, f'expected 36 skills, parsed {n}'
+print(f'catalog parse ok: {n} skills')"
 if [ "${SMOKE:-0}" = "1" ]; then
   echo "== smoke: 8 tasks, disclosure only, Nemotron Lightning =="
   python3 skilleval/run_eval.py --model primalabs-ai/Nemotron-3.5-Lightning-NVFP4 \
