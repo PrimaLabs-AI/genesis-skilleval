@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/primalabs-logotype-white.svg">
+  <img src="assets/primalabs-logotype-black.svg" alt="PrimaLabs AI" width="280">
+</picture>
+
 # Genesis-SkillEval
 
 **An open benchmark from [PrimaLabs AI](https://primalabs.ai):** routing and compliance evaluation for [Genesis Agent Skills](https://gitlab.osti.gov/genesis/genesis-skills) (DOE Genesis Mission / ModCon) across open and closed models. Not affiliated with or endorsed by the U.S. Department of Energy.
