@@ -18,6 +18,9 @@
 | gpt-6-astra | disclosure | 0.991±0.000 | 0.472±0.000 | 0.498±0.000 | 0.000±0.000 | 0.000±0.000 |
 | gpt-6-astra | preload-anchor | 1.000±0.000 | 0.648±0.000 | 0.659±0.000 | 0.083±0.000 | 0.000±0.000 |
 | gpt-6-astra | preload | 1.000±0.000 | 0.620±0.000 | 0.643±0.000 | 0.000±0.000 | 0.000±0.000 |
+| kimi-k3.1-pro | disclosure | 0.969±0.005 | 0.623±0.019 | 0.644±0.007 | 0.000±0.000 | 0.003±0.005 |
+| kimi-k3.1-pro | preload-anchor | 0.994±0.005 | 0.731±0.009 | 0.725±0.009 | 0.000±0.000 | 0.000±0.000 |
+| kimi-k3.1-pro | preload | 0.981±0.009 | 0.747±0.014 | 0.731±0.009 | 0.000±0.000 | 0.006±0.005 |
 | mimo-v2.6-pro | disclosure | 0.994±0.005 | 0.481±0.019 | 0.545±0.012 | 0.000±0.000 | 0.000±0.000 |
 | mimo-v2.6-pro | preload-anchor | 1.000±0.000 | 0.494±0.011 | 0.577±0.009 | 0.000±0.000 | 0.000±0.000 |
 | mimo-v2.6-pro | preload | 1.000±0.000 | 0.543±0.023 | 0.617±0.009 | 0.000±0.000 | 0.000±0.000 |
@@ -185,6 +188,33 @@
 | gpt-6-astra | preload | literature-search | 3/3 (1.00) |
 | gpt-6-astra | preload | multi-agent-systems | 3/3 (1.00) |
 | gpt-6-astra | preload | plasma-sim-skills | 6/6 (1.00) |
+| kimi-k3.1-pro | disclosure | hpc-skills | 39/45 (0.87) |
+| kimi-k3.1-pro | disclosure | basesafe-skills | 50/54 (0.93) |
+| kimi-k3.1-pro | disclosure | academy | 9/9 (1.00) |
+| kimi-k3.1-pro | disclosure | amsc-skills | 63/63 (1.00) |
+| kimi-k3.1-pro | disclosure | basedata-skills | 45/45 (1.00) |
+| kimi-k3.1-pro | disclosure | baseeval-skills | 72/72 (1.00) |
+| kimi-k3.1-pro | disclosure | literature-search | 9/9 (1.00) |
+| kimi-k3.1-pro | disclosure | multi-agent-systems | 9/9 (1.00) |
+| kimi-k3.1-pro | disclosure | plasma-sim-skills | 18/18 (1.00) |
+| kimi-k3.1-pro | preload-anchor | hpc-skills | 43/45 (0.96) |
+| kimi-k3.1-pro | preload-anchor | academy | 9/9 (1.00) |
+| kimi-k3.1-pro | preload-anchor | amsc-skills | 63/63 (1.00) |
+| kimi-k3.1-pro | preload-anchor | basedata-skills | 45/45 (1.00) |
+| kimi-k3.1-pro | preload-anchor | baseeval-skills | 72/72 (1.00) |
+| kimi-k3.1-pro | preload-anchor | basesafe-skills | 54/54 (1.00) |
+| kimi-k3.1-pro | preload-anchor | literature-search | 9/9 (1.00) |
+| kimi-k3.1-pro | preload-anchor | multi-agent-systems | 9/9 (1.00) |
+| kimi-k3.1-pro | preload-anchor | plasma-sim-skills | 18/18 (1.00) |
+| kimi-k3.1-pro | preload | hpc-skills | 41/45 (0.91) |
+| kimi-k3.1-pro | preload | basesafe-skills | 52/54 (0.96) |
+| kimi-k3.1-pro | preload | academy | 9/9 (1.00) |
+| kimi-k3.1-pro | preload | amsc-skills | 63/63 (1.00) |
+| kimi-k3.1-pro | preload | basedata-skills | 45/45 (1.00) |
+| kimi-k3.1-pro | preload | baseeval-skills | 72/72 (1.00) |
+| kimi-k3.1-pro | preload | literature-search | 9/9 (1.00) |
+| kimi-k3.1-pro | preload | multi-agent-systems | 9/9 (1.00) |
+| kimi-k3.1-pro | preload | plasma-sim-skills | 18/18 (1.00) |
 | mimo-v2.6-pro | disclosure | basesafe-skills | 52/54 (0.96) |
 | mimo-v2.6-pro | disclosure | academy | 9/9 (1.00) |
 | mimo-v2.6-pro | disclosure | amsc-skills | 63/63 (1.00) |
@@ -352,10 +382,10 @@
 
 | required | selected instead | count |
 |---|---|---|
-| pbs | slurm | 55 |
+| pbs | slurm | 67 |
 | i2-api | amsc-mag | 46 |
 | globus-compute | perlmutter | 40 |
-| ai-fingerprint | fingerprinting | 28 |
+| ai-fingerprint | fingerprinting | 31 |
 | iri-api | amsc-python-client | 27 |
 | configuration-planner | configuration-creator | 27 |
 | data-exploration | configuration-creator | 19 |

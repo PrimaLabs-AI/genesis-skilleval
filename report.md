@@ -56,6 +56,7 @@ Temperature 0, 3 trials, identical harness, pinned model ids, ~$60 total. Mean e
 |---|---|---|---|---|
 | **nemotron-3.5-super-vl (PrimaLabs NVFP4)** | preload | **0.830** | 0.981 | our serving |
 | **nemotron-3.5-super-vl (OpenRouter)** | preload / preload-anchor | **0.753** | 0.938 | independent serving, provider unpinned |
+| moonshotai/kimi-k3.1-pro (OpenRouter) | preload | 0.747 | 0.981 | statistically tied with Super VL on neutral serving; no format-break |
 | nemotron-3.5-lightning (PrimaLabs NVFP4) | preload-anchor | 0.738 | 0.855 | our serving |
 | nemotron-3.5-lightning (OpenRouter) | preload-anchor | 0.707 | 0.827 | format-break replicates: preload false-act 0.25–0.50/trial, anchor → ~0.03 |
 | openai/gpt-5.2 | preload-anchor | 0.716 | 0.947 | raw preload leaks 8–25% distractor false-acts; anchor fixes |
@@ -67,7 +68,7 @@ Conclusions this locks in:
 1. **Super VL ranks #1 on both serving stacks, including over Claude Opus 5.5.** Margin is serving-dependent: +3.7pp over GPT-5.2 on neutral infrastructure, +11.4pp on PrimaLabs NVFP4. Report the model-level claim from the OpenRouter number; the 0.830 is a system-level (model+serving) result.
 2. **Serving measurably affects routing quality** (0.830 vs 0.753 for the identical model) — provider choice, quantization, and template are part of agentic accuracy, not just speed.
 3. **The instruction-mass format-break is cross-vendor:** raw GPT-5.2 reproduces the Lightning failure under preload (distractor false-activation up to 25%), eliminated by the same one-line anchor. Capacity-dependent, not vendor- or openness-dependent.
-4. **Preload ≥ disclosure for all 9 models tested** across NVIDIA, OpenAI, Anthropic, Google, Zhipu, Xiaomi.
+4. **Preload ≥ disclosure for all 10 models tested** across NVIDIA, OpenAI, Anthropic, Google, Zhipu, Xiaomi, Moonshot.
 5. **Raw API ≈ CLI for Claude (±1pp); raw GPT-5.2 beats its Codex-mediated cousin (0.716 vs 0.648)** — harness mediation is not neutral for OpenAI.
 
 ## Findings
