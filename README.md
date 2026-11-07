@@ -13,6 +13,18 @@
 - Partner brief: [`one-pager.md`](one-pager.md) · Broad-audience brief: [`brief-genesis-science-agents.md`](brief-genesis-science-agents.md)
 - Serving bug found during the study: [`bug-supervl-tool-tag-loop.md`](bug-supervl-tool-tag-loop.md)
 
+## Background: why this study exists
+
+The [Genesis Mission](https://www.energy.gov/undersecretaryforscience/genesis-mission/genesis-mission) is DOE's program to deploy AI agents across the national laboratory system — agents that plan experiments, steer simulations, submit jobs to supercomputers like Frontier and Perlmutter, and move data through the American Science Cloud. In October 2026, DOE released [Genesis Agent Skills](https://gitlab.osti.gov/genesis/genesis-skills): the first shared catalog of validated agent workflows for this ecosystem, built by the laboratory system under ModCon. Each skill is a `SKILL.md` file (the [agentskills.io](https://agentskills.io) format) encoding a vetted procedure — how to submit a Slurm job, run uncertainty quantification, generate a data card, red-team an agent before it touches controlled data.
+
+A catalog only helps if the agent picks the right entry. Every agent action starts with a routing decision: *this request needs the Slurm skill, not the PBS skill.* Route wrong and the agent improvises exactly where DOE built the catalog to stop improvisation; activate three skills instead of one and the agent acquires tool permissions and context it shouldn't have, in deployments where actions are audited and data may be export-controlled. For science agents, skill routing is a safety and reproducibility property — and until this study, nobody had measured it.
+
+Three questions this benchmark answers:
+
+1. **Which models route the Genesis catalog reliably?** Relevant because the mission's hardest deployments (air-gapped enclaves, export-controlled data) can only use open-weight models — so it matters whether the open path costs capability. (It doesn't: see results.)
+2. **Does the skill spec's loading convention — progressive disclosure — hold up?** It predates 1M-context models and cheap prompt caching; we test it against full-catalog preloading.
+3. **Do models keep following agent protocols under a full catalog's instruction load?** Governed agents depend on parseable outputs; we measure protocol breakdown, not just routing accuracy.
+
 ## Results (exact-match, best config per model, mean of 3 trials, temp 0)
 
 | model | serving | exact | recall |
