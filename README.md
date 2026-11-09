@@ -154,6 +154,40 @@ Model id routing: `primalabs-ai/*` → PrimaLabs endpoint; anything else → Ope
 
 Synthetic task set (DeepSeek-generated; human audit pending), single-label ground truth (deflates exact-match for legitimately multi-skill tasks), execution eval is chat-only, OpenRouter provider not pinned for open-model replication runs. Full list and discussion in `report.md`.
 
+## Authors
+
+- **Prasanna Balaprakash** — Co-Founder & CEO, [PrimaLabs AI](https://primalabs.ai)
+
+Benchmark design, harness, and analysis by PrimaLabs AI. Contributions welcome via issues and pull requests.
+
+## Citation
+
+If you use Genesis-SkillEval, the task set, or the published results, please cite:
+
+```bibtex
+@misc{balaprakash2026genesisskilleval,
+  title        = {Genesis-SkillEval: A Routing and Compliance Benchmark for
+                  Genesis Agent Skills Across Open and Closed Models},
+  author       = {Balaprakash, Prasanna},
+  year         = {2026},
+  month        = nov,
+  publisher    = {PrimaLabs AI},
+  howpublished = {\url{https://github.com/PrimaLabs-AI/genesis-skilleval}},
+  note         = {Benchmark harness, task set, and results for the DOE Genesis
+                  Mission Agent Skills catalog (genesis-skills @ 70dce5ac)}
+}
+```
+
+Please also cite the skill catalog this benchmark evaluates: *Genesis Agent Skills*, developed by the BASE team within ModCon (Transformational AI Models Consortium), DOE Genesis Mission — https://gitlab.osti.gov/genesis/genesis-skills.
+
+## Acknowledgments
+
+This benchmark evaluates the **Genesis Agent Skills** catalog produced by the U.S. Department of Energy's **Genesis Mission** through **ModCon: Transformational AI Models and Data** and the Baseline AI R&D Capabilities (BASE) team — a collaboration across the DOE National Laboratory system, co-led by Nathan Hodas (PNNL) and Stefan Wild (LBNL), with catalog contributions from PNNL, LBNL, PPPL, ORNL, ANL, Jefferson Lab, and the American Science Cloud teams. We thank the catalog's contributors for releasing it openly; this independent evaluation would not exist without that release.
+
+PrimaLabs AI participates in DOE Genesis Mission projects led by Savannah River National Laboratory — **VITA-SCALE** and **SCOPE**, supporting DOE's Office of Environmental Management — in partnership with NVIDIA.
+
+This work was performed and funded by PrimaLabs AI. It is not a product of, affiliated with, or endorsed by the U.S. Department of Energy; all findings and any errors are our own.
+
 ## License
 
-Apache-2.0 (see `LICENSE`).
+Apache-2.0 (see `LICENSE`). The evaluated skill catalog is separately licensed by its authors (BSD-2-Clause, ModCon) and is not redistributed in this repository.
