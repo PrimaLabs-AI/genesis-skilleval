@@ -2,6 +2,9 @@
 
 | model | condition | recall | exact | precision | false-act | unparse |
 |---|---|---|---|---|---|---|
+| beam-1.0-501b-a23b | disclosure | 0.960±0.014 | 0.571±0.028 | 0.613±0.013 | 0.167±0.000 | 0.019±0.005 |
+| beam-1.0-501b-a23b | preload-anchor | 0.997±0.005 | 0.756±0.019 | 0.750±0.022 | 0.000±0.000 | 0.000±0.000 |
+| beam-1.0-501b-a23b | preload | 0.941±0.014 | 0.731±0.009 | 0.755±0.008 | 0.500±0.000 | 0.089±0.005 |
 | claude-opus-5.5 | preload | 0.997±0.005 | 0.679±0.005 | 0.701±0.001 | 0.000±0.000 | 0.000±0.000 |
 | claude-sonnet-5.5 | disclosure | 0.975±0.005 | 0.571±0.014 | 0.599±0.011 | 0.000±0.000 | 0.000±0.000 |
 | claude-sonnet-5.5 | preload-anchor | 0.994±0.005 | 0.639±0.000 | 0.649±0.001 | 0.000±0.000 | 0.000±0.000 |
@@ -44,6 +47,33 @@
 
 | model | condition | domain | recall |
 |---|---|---|---|
+| beam-1.0-501b-a23b | disclosure | basesafe-skills | 48/54 (0.89) |
+| beam-1.0-501b-a23b | disclosure | hpc-skills | 41/45 (0.91) |
+| beam-1.0-501b-a23b | disclosure | amsc-skills | 61/63 (0.97) |
+| beam-1.0-501b-a23b | disclosure | baseeval-skills | 71/72 (0.99) |
+| beam-1.0-501b-a23b | disclosure | academy | 9/9 (1.00) |
+| beam-1.0-501b-a23b | disclosure | basedata-skills | 45/45 (1.00) |
+| beam-1.0-501b-a23b | disclosure | literature-search | 9/9 (1.00) |
+| beam-1.0-501b-a23b | disclosure | multi-agent-systems | 9/9 (1.00) |
+| beam-1.0-501b-a23b | disclosure | plasma-sim-skills | 18/18 (1.00) |
+| beam-1.0-501b-a23b | preload-anchor | amsc-skills | 62/63 (0.98) |
+| beam-1.0-501b-a23b | preload-anchor | academy | 9/9 (1.00) |
+| beam-1.0-501b-a23b | preload-anchor | basedata-skills | 45/45 (1.00) |
+| beam-1.0-501b-a23b | preload-anchor | baseeval-skills | 72/72 (1.00) |
+| beam-1.0-501b-a23b | preload-anchor | basesafe-skills | 54/54 (1.00) |
+| beam-1.0-501b-a23b | preload-anchor | hpc-skills | 45/45 (1.00) |
+| beam-1.0-501b-a23b | preload-anchor | literature-search | 9/9 (1.00) |
+| beam-1.0-501b-a23b | preload-anchor | multi-agent-systems | 9/9 (1.00) |
+| beam-1.0-501b-a23b | preload-anchor | plasma-sim-skills | 18/18 (1.00) |
+| beam-1.0-501b-a23b | preload | hpc-skills | 35/45 (0.78) |
+| beam-1.0-501b-a23b | preload | baseeval-skills | 68/72 (0.94) |
+| beam-1.0-501b-a23b | preload | amsc-skills | 60/63 (0.95) |
+| beam-1.0-501b-a23b | preload | basedata-skills | 43/45 (0.96) |
+| beam-1.0-501b-a23b | preload | academy | 9/9 (1.00) |
+| beam-1.0-501b-a23b | preload | basesafe-skills | 54/54 (1.00) |
+| beam-1.0-501b-a23b | preload | literature-search | 9/9 (1.00) |
+| beam-1.0-501b-a23b | preload | multi-agent-systems | 9/9 (1.00) |
+| beam-1.0-501b-a23b | preload | plasma-sim-skills | 18/18 (1.00) |
 | claude-opus-5.5 | preload | amsc-skills | 62/63 (0.98) |
 | claude-opus-5.5 | preload | academy | 9/9 (1.00) |
 | claude-opus-5.5 | preload | basedata-skills | 45/45 (1.00) |
@@ -382,18 +412,18 @@
 
 | required | selected instead | count |
 |---|---|---|
-| pbs | slurm | 67 |
+| pbs | slurm | 72 |
 | i2-api | amsc-mag | 46 |
 | globus-compute | perlmutter | 40 |
 | ai-fingerprint | fingerprinting | 31 |
-| iri-api | amsc-python-client | 27 |
-| configuration-planner | configuration-creator | 27 |
-| data-exploration | configuration-creator | 19 |
-| amsc-python-client | perlmutter | 19 |
-| amsc-python-client | iri-api | 18 |
+| configuration-planner | configuration-creator | 30 |
+| iri-api | amsc-python-client | 28 |
+| data-exploration | configuration-creator | 20 |
+| amsc-python-client | iri-api | 20 |
+| amsc-python-client | perlmutter | 20 |
+| iri-api | perlmutter | 16 |
 | uncertainty-quantification | <nothing> | 16 |
-| iri-api | perlmutter | 15 |
-| amsc-python-client | aurora | 14 |
+| amsc-python-client | aurora | 15 |
+| amsc-python-client | pbs | 14 |
 | globus-compute | amsc-python-client | 13 |
 | battleprint | agentic-vulnerabilities-scan | 13 |
-| configuration-creator | configuration-planner | 13 |

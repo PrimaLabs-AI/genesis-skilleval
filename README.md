@@ -7,7 +7,7 @@
 
 **An open benchmark from [PrimaLabs AI](https://primalabs.ai):** routing and compliance evaluation for [Genesis Agent Skills](https://gitlab.osti.gov/genesis/genesis-skills) (DOE Genesis Mission / ModCon) across open and closed models. Not affiliated with or endorsed by the U.S. Department of Energy.
 
-**Headline:** on the 36-skill Genesis catalog, NVIDIA's open-weight Nemotron 3.5 Super VL achieves the highest exact-match skill routing of ten models measured — above GPT-5.2, Claude Opus 5.5, Claude Sonnet 5.5, Gemini 3.5 Flash, and statistically tied with Kimi K3.1 Pro on neutral serving — on both PrimaLabs serving (0.830) and neutral third-party serving (0.753).
+**Headline:** on the 36-skill Genesis catalog, NVIDIA's open-weight Nemotron 3.5 Super VL achieves the highest exact-match skill routing of eleven models measured — above GPT-5.2, Claude Opus 5.5, Claude Sonnet 5.5, and Gemini 3.5 Flash; on neutral serving it is in a statistical three-way tie with the strongest other open models (Reflection Beam 1.0, Kimi K3.1 Pro) — on both PrimaLabs serving (0.830) and neutral third-party serving (0.753).
 
 - Full methods, results, findings, caveats: [`report.md`](report.md)
 - Partner brief: [`one-pager.md`](one-pager.md) · Broad-audience brief: [`brief-genesis-science-agents.md`](brief-genesis-science-agents.md)
@@ -30,6 +30,7 @@ Three questions this benchmark answers:
 | model | serving | exact | recall |
 |---|---|---|---|
 | Nemotron 3.5 Super VL (open) | PrimaLabs NVFP4 | **0.830** | 0.981 |
+| Reflection Beam 1.0 (open) | OpenRouter | 0.756 | 0.997 |
 | Nemotron 3.5 Super VL (open) | OpenRouter | **0.753** | 0.938 |
 | Kimi K3.1 Pro (open) | OpenRouter | 0.747 | 0.981 |
 | Nemotron 3.5 Lightning (open) | PrimaLabs NVFP4 | 0.738 | 0.855 |
