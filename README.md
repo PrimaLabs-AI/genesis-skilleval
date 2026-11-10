@@ -77,7 +77,7 @@ flowchart LR
     COND --> M
     TASKS --> M
     PARSE --> MET
-    MET --> RES[("results/&lt;model&gt;.&lt;cond&gt;.t&lt;N&gt;.jsonl<br/>raw replies retained")]
+    MET --> RES[("results/{model}.{cond}.t{N}.jsonl<br/>raw replies retained")]
     RES --> AN["analyze.py<br/>mean±sd · per-domain recall · confusion pairs"]
 ```
 
