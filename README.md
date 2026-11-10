@@ -48,12 +48,37 @@ Given a scientist's natural-language request and the skill catalog, does the mod
 
 ```mermaid
 flowchart LR
-    A[genesis-skills clone] -->|catalog.py parses<br/>36 SKILL.md files| B[skill blocks]
-    T[tasks/tasks.jsonl<br/>120 labeled tasks] --> E
-    B -->|disclosure / preload /<br/>preload-anchor| E[run_eval.py<br/>system prompt + task]
-    E -->|"JSON: {skills: [...]}"| S[score vs label]
-    S --> R["results/&lt;model&gt;.&lt;cond&gt;.t&lt;N&gt;.jsonl"]
-    R --> AN[analyze.py<br/>tables, confusions]
+    subgraph IN["Inputs (pinned)"]
+        direction TB
+        CAT["genesis-skills @ 70dce5ac<br/>36 × SKILL.md"]
+        TASKS["tasks/tasks.jsonl<br/>108 skill tasks + 12 distractors"]
+    end
+
+    subgraph COND["Catalog loading — one condition per run"]
+        direction TB
+        D["disclosure<br/>name + description · ~3.7k tok"]
+        P["preload<br/>full instruction bodies · ~63k tok"]
+        PA["preload-anchor<br/>preload + one-line format reminder"]
+    end
+
+    subgraph EVAL["run_eval.py — temp 0 · 3 trials · resumable"]
+        direction TB
+        M["model under test<br/>PrimaLabs · OpenRouter · local CLI"]
+        PARSE["parse reply as<br/>JSON skills list"]
+        M --> PARSE
+    end
+
+    subgraph SCORE["Scoring vs label"]
+        direction TB
+        MET["recall · exact-match · precision<br/>false-activation on distractors"]
+    end
+
+    CAT --> COND
+    COND --> M
+    TASKS --> M
+    PARSE --> MET
+    MET --> RES[("results/&lt;model&gt;.&lt;cond&gt;.t&lt;N&gt;.jsonl<br/>raw replies retained")]
+    RES --> AN["analyze.py<br/>mean±sd · per-domain recall · confusion pairs"]
 ```
 
 ### Task set
