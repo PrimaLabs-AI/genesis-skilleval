@@ -1,7 +1,6 @@
 # Bug: Super VL degenerates into repeated tool-call closing tags in plain chat mode
 
 **Model:** `primalabs-ai/Nemotron-3.5-Super-VL-NVFP4` (serverless endpoint)
-**Severity:** high — silently corrupts agentic/instruction-heavy workloads; burns the full completion budget per request; likely depressing our Artificial Analysis multi-turn agentic numbers (their harness measures exactly this mode).
 **Found by:** skill-execution eval in `gm-agent` (2026-11-05). Not reproducible on Lightning (it truncates but does not loop).
 
 ## Symptom

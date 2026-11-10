@@ -10,7 +10,7 @@
 **Headline:** on the 36-skill Genesis catalog, NVIDIA's open-weight Nemotron 3.5 Super VL achieves the highest exact-match skill routing of eleven models measured — above GPT-5.2, Claude Opus 5.5, Claude Sonnet 5.5, and Gemini 3.5 Flash; on neutral serving it is in a statistical three-way tie with the strongest other open models (Reflection Beam 1.0, Kimi K3.1 Pro) — on both PrimaLabs serving (0.830) and neutral third-party serving (0.753).
 
 - Full methods, results, findings, caveats: [`report.md`](report.md)
-- Partner brief: [`one-pager.md`](one-pager.md) · Broad-audience brief: [`brief-genesis-science-agents.md`](brief-genesis-science-agents.md)
+- Broad-audience brief: [`brief-genesis-science-agents.md`](brief-genesis-science-agents.md)
 - Serving bug found during the study: [`bug-supervl-tool-tag-loop.md`](bug-supervl-tool-tag-loop.md)
 
 ## Background: why this study exists

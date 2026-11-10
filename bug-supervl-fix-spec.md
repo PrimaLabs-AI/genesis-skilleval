@@ -35,5 +35,4 @@ Tool-call parsing/stop handling is only active when the request defines `tools`.
 ## Impact
 
 - Pre-guard, every affected response burned the full completion budget; post-guard it still pollutes agentic pipelines with garbage tags and a wrong finish_reason.
-- Artificial Analysis's multi-turn agentic workload exercises exactly this path — plausibly costs Super VL leaderboard position.
 - The failure is publicly reproducible: the repro ships in the public genesis-skilleval repo.
