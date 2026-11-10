@@ -69,7 +69,7 @@ Conclusions this locks in:
 1. **Super VL ranks #1 on both serving stacks, including over Claude Opus 5.5.** Margin is serving-dependent: +3.7pp over GPT-5.2 on neutral infrastructure, +11.4pp on PrimaLabs NVFP4. Report the model-level claim from the OpenRouter number; the 0.830 is a system-level (model+serving) result.
 2. **Serving measurably affects routing quality** (0.830 vs 0.753 for the identical model) — provider choice, quantization, and template are part of agentic accuracy, not just speed.
 3. **The instruction-mass format-break is cross-vendor:** raw GPT-5.2 reproduces the Lightning failure under preload (distractor false-activation up to 25%), eliminated by the same one-line anchor. Capacity-dependent, not vendor- or openness-dependent.
-4. **Preload ≥ disclosure for all 11 models tested** across NVIDIA, OpenAI, Anthropic, Google, Zhipu, Xiaomi, Moonshot, Reflection.
+4. **A preloaded configuration (raw or anchored) ≥ disclosure on all 11 endpoints tested under both conditions** (10 distinct models across NVIDIA, OpenAI, Anthropic, Google, Zhipu, Xiaomi, Moonshot, Reflection; gains +5.5 to +18.5pp exact). Lightning requires the anchor — its raw preload scores below disclosure (0.682→0.661); Opus ran preload-only and is excluded.
 5. **Raw API ≈ CLI for Claude (±1pp); raw GPT-5.2 beats its Codex-mediated cousin (0.716 vs 0.648)** — harness mediation is not neutral for OpenAI.
 
 ## Findings
