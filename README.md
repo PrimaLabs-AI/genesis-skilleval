@@ -210,7 +210,7 @@ Please also cite the skill catalog this benchmark evaluates: *Genesis Agent Skil
 
 This benchmark evaluates the **Genesis Agent Skills** catalog produced by the U.S. Department of Energy's **Genesis Mission** through **ModCon: Transformational AI Models and Data** and the Baseline AI R&D Capabilities (BASE) team — a collaboration across the DOE National Laboratory system, co-led by Nathan Hodas (PNNL) and Stefan Wild (LBNL), with catalog contributions from PNNL, LBNL, PPPL, ORNL, ANL, Jefferson Lab, and the American Science Cloud teams. We thank the catalog's contributors for releasing it openly; this independent evaluation would not exist without that release.
 
-PrimaLabs AI participates in DOE Genesis Mission projects led by Savannah River National Laboratory — **VITA-SCALE** and **SCOPE**, supporting DOE's Office of Environmental Management — in partnership with NVIDIA.
+PrimaLabs AI participates in DOE Genesis Mission projects led by Savannah River National Laboratory — **VITA-SCALE** and **SCOPE**, supporting DOE's Office of Environmental Management.
 
 This work was performed and funded by PrimaLabs AI. It is not a product of, affiliated with, or endorsed by the U.S. Department of Energy; all findings and any errors are our own.
 
