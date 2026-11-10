@@ -1,7 +1,7 @@
 # Super VL no-tools chat: tool-envelope loop — fix spec
 
 **Endpoint:** `primalabs-ai/Nemotron-3.5-Super-VL-NVFP4` (serverless).
-**Status 2026-11-09:** repetition guard deployed (caps the loop at ~15 reps / ~351 tokens); **root cause unfixed** — repro still fails its acceptance test.
+**Status 2026-11-09 (later):** ✅ **RESOLVED** — stop-sequence patch deployed and verified; all four acceptance tests pass (AT1 clean stop/0 loops/325 tok; AT2 tools-mode unchanged; AT3 exec scores up to 3.58/3.75/3.00 from 2.78-completeness baseline; AT4 zero `<|open|>`). Residual: 2/36 exec cases show a *text-level* sentence-repetition variant that stop sequences cannot catch — keep/extend the sampler n-gram repetition guard. Earlier same-day status: guard-only mitigation (~15 reps, wrong `finish_reason: length`), root cause then unfixed.
 **Lightning is unaffected** (truncates, never loops) — diff the two deployments' configs first; the divergence is probably the whole bug.
 Companion report with deterministic repro: [`bug-supervl-tool-tag-loop.md`](bug-supervl-tool-tag-loop.md).
 
