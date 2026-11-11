@@ -21,7 +21,7 @@ A catalog only helps if the agent picks the right entry. Every agent action star
 
 Three questions this benchmark answers:
 
-1. **Which models route the Genesis catalog reliably?** Relevant because the mission's hardest deployments (air-gapped enclaves, export-controlled data) can only use open-weight models — so it matters whether the open path costs capability. (It doesn't: see results.)
+1. **Which models route the Genesis catalog reliably?** Relevant because the mission's most sensitive deployments (air-gapped enclaves, export-controlled data) favor models that can run fully on-premises, pinned and auditable — a property open weights provide by default — so it matters whether that path costs capability. (It doesn't: see results.)
 2. **Does the skill spec's loading convention — progressive disclosure — hold up?** It predates 1M-context models and cheap prompt caching; we test it against full-catalog preloading.
 3. **Do models keep following agent protocols under a full catalog's instruction load?** Governed agents depend on parseable outputs; we measure protocol breakdown, not just routing accuracy.
 
