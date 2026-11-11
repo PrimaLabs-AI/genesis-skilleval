@@ -27,20 +27,24 @@ Three questions this benchmark answers:
 
 ## Results (exact-match, best config per model, mean±sd over 3 trials, temp 0)
 
-| model | serving | exact | recall |
-|---|---|---|---|
-| Nemotron 3.5 Super VL (open) | PrimaLabs NVFP4 | **0.830 ± 0.019** | 0.981 ± 0.010 |
-| Reflection Beam 1.0 (open) | OpenRouter | 0.756 ± 0.019 | 0.997 ± 0.005 |
-| Nemotron 3.5 Super VL (open) | OpenRouter | **0.753 ± 0.014** | 0.938 ± 0.019 |
-| Kimi K3.1 Pro (open) | OpenRouter | 0.747 ± 0.014 | 0.981 ± 0.010 |
-| Nemotron 3.5 Lightning (open) | PrimaLabs NVFP4 | 0.738 ± 0.027 | 0.855 ± 0.019 |
-| GPT-5.2 | OpenRouter | 0.716 ± 0.014 | 0.947 ± 0.014 |
-| Nemotron 3.5 Lightning (open) | OpenRouter | 0.707 ± 0.005 | 0.827 ± 0.019 |
-| Claude Opus 5.5 | OpenRouter | 0.679 ± 0.005 | 0.997 ± 0.005 |
-| Gemini 3.5 Flash | OpenRouter | 0.663 ± 0.011 | 0.978 ± 0.005 |
-| GLM-5.3-Flash (open) | PrimaLabs | 0.657 ± 0.016 | 0.991 ± 0.010 |
-| Claude Sonnet 5.5 | OpenRouter | 0.639 ± 0.000 | 0.994 ± 0.005 |
-| MiMo-V2.6-Pro (open) | PrimaLabs | 0.543 ± 0.023 | 1.000 ± 0.000 |
+| model | serving | exact | recall | AA Intelligence Index* |
+|---|---|---|---|---|
+| Nemotron 3.5 Super VL (open) | PrimaLabs NVFP4 | **0.830 ± 0.019** | 0.981 ± 0.010 | 14 |
+| Reflection Beam 1.0 (open) | OpenRouter | 0.756 ± 0.019 | 0.997 ± 0.005 | 18 |
+| Nemotron 3.5 Super VL (open) | OpenRouter | **0.753 ± 0.014** | 0.938 ± 0.019 | 14 |
+| Kimi K3.1 Pro (open) | OpenRouter | 0.747 ± 0.014 | 0.981 ± 0.010 | 46 |
+| Nemotron 3.5 Lightning (open) | PrimaLabs NVFP4 | 0.738 ± 0.027 | 0.855 ± 0.019 | 6 |
+| GPT-5.2 | OpenRouter | 0.716 ± 0.014 | 0.947 ± 0.014 | n/a† |
+| Nemotron 3.5 Lightning (open) | OpenRouter | 0.707 ± 0.005 | 0.827 ± 0.019 | 6 |
+| Claude Opus 5.5 | OpenRouter | 0.679 ± 0.005 | 0.997 ± 0.005 | 35–59‡ |
+| Gemini 3.5 Flash | OpenRouter | 0.663 ± 0.011 | 0.978 ± 0.005 | n/a† |
+| GLM-5.3-Flash (open) | PrimaLabs | 0.657 ± 0.016 | 0.991 ± 0.010 | 28 |
+| Claude Sonnet 5.5 | OpenRouter | 0.639 ± 0.000 | 0.994 ± 0.005 | 26–55‡ |
+| MiMo-V2.6-Pro (open) | PrimaLabs | 0.543 ± 0.023 | 1.000 ± 0.000 | 30 |
+
+\* [Artificial Analysis Intelligence Index](https://artificialanalysis.ai/leaderboards/models) v5.0.1, retrieved 2026-11-11. † Deprecated on AA; no v5 index published. ‡ AA scores Claude per reasoning-effort variant (low→max); our runs used API-default effort, so the full range is shown.
+
+The column makes one thing obvious: **skill routing is not predicted by general intelligence.** Super VL (index 14) out-routes Claude Opus 5.5 (35–59) by 15+ points; Lightning (index 6) matches GPT-5.2. Routing on a governed catalog rewards precision and instruction-following, which the Intelligence Index does not measure — one more reason the mission needs routing benchmarks, not just intelligence leaderboards.
 
 ## How the harness works
 
