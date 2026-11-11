@@ -13,7 +13,7 @@
 - Broad-audience brief: [`brief-genesis-science-agents.md`](brief-genesis-science-agents.md)
 - Serving bug found during the study: [`bug-supervl-tool-tag-loop.md`](bug-supervl-tool-tag-loop.md)
 
-## Background: why this study exists
+## Background
 
 The [Genesis Mission](https://www.energy.gov/undersecretaryforscience/genesis-mission/genesis-mission) is DOE's program to deploy AI agents across the national laboratory system — agents that plan experiments, steer simulations, submit jobs to supercomputers like Frontier and Perlmutter, and move data through the American Science Cloud. In October 2026, DOE released [Genesis Agent Skills](https://gitlab.osti.gov/genesis/genesis-skills): the first shared catalog of validated agent workflows for this ecosystem, built by the laboratory system under ModCon. Each skill is a `SKILL.md` file (the [agentskills.io](https://agentskills.io) format) encoding a vetted procedure — how to submit a Slurm job, run uncertainty quantification, generate a data card, red-team an agent before it touches controlled data.
 
